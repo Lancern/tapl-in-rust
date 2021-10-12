@@ -1,0 +1,11 @@
+[package]
+name = "tapl"
+authors = ["Sirui Mu <msrlancern@gmail.com>"]
+version = "0.1.0"
+edition = "2018"
+description = "Implementation of the topics discussed in TaPL"
+repository = "https://github.com/Lancern/tapl-in-rust"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
