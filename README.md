@@ -31,4 +31,4 @@ arithmetic expressions.
 
 ## License
 
-> TODO.
+This project is open sourced under [MIT License](./LICENSE).
