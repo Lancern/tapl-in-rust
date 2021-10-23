@@ -12,8 +12,19 @@ pub trait Evaluator<T: Term> {
     fn eval_one_step(&mut self, t: T) -> Result<EvaluationStep<T>, Self::Err>;
 
     /// Evaluate the given term one or more steps until its normal form.
-    fn eval(&mut self, mut t: T) -> Result<T, Self::Err> {
+    fn eval(&mut self, t: T) -> Result<T, Self::Err> {
+        self.eval_with_monitor(t, |_| {})
+    }
+
+    /// Evaluate the given term one or more steps until its normal form. The given monitor function
+    /// will be invoked at each evaluation step with the term to be evaluated.
+    fn eval_with_monitor<F: FnMut(&T)>(
+        &mut self,
+        mut t: T,
+        mut monitor: F,
+    ) -> Result<T, Self::Err> {
         let nf = loop {
+            monitor(&t);
             match self.eval_one_step(t)? {
                 EvaluationStep::Step(st) => t = st,
                 EvaluationStep::Halt(nf) => break nf,
