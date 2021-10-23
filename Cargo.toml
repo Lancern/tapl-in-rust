@@ -9,3 +9,6 @@ repository = "https://github.com/Lancern/tapl-in-rust"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
+
+[features]
+unty_arith = []
